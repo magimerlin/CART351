@@ -35,6 +35,7 @@
     console.log("testing");
 
     let clickedC = false;
+    let clickedD = false;
 
     document.getElementById("c").addEventListener("mouseover",clickHandler);
     document.getElementById("d").addEventListener("mousedown",clickHandler);
@@ -54,6 +55,20 @@
           clickedC = false;
       }
 
+function clickHandler(){
+  concol.log(this.id);
+  if(this.id === "d" && clickedD === false){
+this.style.background = "orange";
+this.style.height = "200px";
+clickedD = true;
+    }
+    else if (this.id === "d" && clickedD === true){
+      this.style.background = "#422018"
+        this.style.height = "10vw";
+        clickedD = false;
+    }
+
+}
 
     }
   } //on load
