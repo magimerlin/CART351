@@ -36,10 +36,11 @@
 
     let clickedC = false;
     let clickedD = false;
+    let clickedE = false;
 
     document.getElementById("c").addEventListener("mouseover",clickHandler);
-    document.getElementById("d").addEventListener("mousedown",clickHandler);
-    document.getElementById("e").addEventListener("mousedown",clickHandler);
+    document.getElementById("d").addEventListener("mousedown",clickHandlerD);
+    document.getElementById("e").addEventListener("mousedown",clickHandlerE);
 
     function clickHandler(){
       console.log(this.id);
@@ -47,6 +48,7 @@
         this.style.background = "blue";
         this.style.width = "200px";
         clickedC = true;
+        console.log("over");
       }
 
       else if (this.id === "c" && clickedC === true){
@@ -54,12 +56,13 @@
           this.style.width = "10vw";
           clickedC = false;
       }
+    }
 
-function clickHandler(){
-  concol.log(this.id);
+function clickHandlerD(){
+  console.log(this.id);
   if(this.id === "d" && clickedD === false){
-this.style.background = "orange";
-this.style.height = "200px";
+    this.style.background = "orange";
+    this.style.height = "200px";
 clickedD = true;
     }
     else if (this.id === "d" && clickedD === true){
@@ -68,10 +71,22 @@ clickedD = true;
         clickedD = false;
     }
 
-}
 
-    }
-  } //on load
+  }
+
+  function clickHandlerE(){
+    console.log(this.id);
+    if(this.id === "e" && clickedE === false){
+  this.style.background = "black";
+  clickedE = true;
+      }
+      else if (this.id === "e" && clickedE === true){
+        this.style.background = "#422018"
+          clickedE = false;
+      }
+  }
+}
+ //on load
 
 
   </script>
