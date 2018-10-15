@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Athiti|PT+Sans+Narrow" rel="stylesheet">
+  <title> BoxGame </title>
+  <style>
+
+  #c {
+      background-color: #3e181b;
+      border: 3px solid #db1d2d;}
+
+  #d {
+      background-color: #422018;
+      border: 3px solid #f0421c;}
+
+  #e {
+      background-color: #45391b;
+      border: 3px solid #fec02d;}
+
+  #f {
+    background-color:: #45332c;
+    border: 3px solid #fec02d;}
+
+  #g {
+      background-color:: #45391b;
+      border: 3px solid #db1d2d;}
+
+  body{
+
+
+        background:black;}
+  .para {color:white;font-size:22pt; background:purple;margin-left: 1%;margin-top: 1%; padding:1%;}
+      .box {
+      width: 5vw; /*(1/10th) viewport width */
+      height: 10vw;
+      margin-left: 2.7%;
+      margin-top: 1%;
+      display:inline-block;
+    }
+  .wrapper{
+    margin-left:30%;
+    margin-top:15%;
+  }
+
+  .label{
+
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-family: 'Athiti', sans-serif;
+    font-family: 'Amatic SC', cursive;
+    color:white;
+    font-size:22pt;
+    text-align: center;
+
+  }
+
+  </style>
+  <script>
+  window.onload = function(){
+
+    var fiveMinutes = 60 * 5,
+   display = document.querySelector('#time');
+    startTimer(fiveMinutes, display);
+    console.log("testing");
+
+    var score = 0;
+
+    let clickedC = false;
+    let clickedD = false;
+    let clickedE = false;
+    let clickedF = false;
+    let clickedG = false;
+
+    let colorsArray  = ["red","blue","yellow","purple"];
+    let boxesArrayIDs  = ["c","d","e","f","g"];
+
+    document.getElementById("c").addEventListener("mousedown",changeBoxes);
+    document.getElementById("d").addEventListener("mousedown",changeBoxes);
+    document.getElementById("e").addEventListener("mousedown",changeBoxes);
+    document.getElementById("f").addEventListener("mousedown",changeBoxes);
+    document.getElementById("g").addEventListener("mousedown",changeBoxes);
+
+    document.getElementById("score").innerHTML = score;
+
+      function changeBoxes(){
+        let randomNum = Math.floor(Math.random()*colorsArray.length);
+        let randomNumBoxId = Math.floor(Math.random()*boxesArrayIDs.length);
+        let randomNumColorForOtherBox = Math.floor(Math.random()*colorsArray.length);
+        this.style.background = colorsArray[randomNum];
+        document.getElementById(boxesArrayIDs[randomNumBoxId]).style.background  = colorsArray[randomNumColorForOtherBox];
+
+        document.getElementById("score").innerHTML = ++score;
+
+        for(let i = 0; i<boxesArrayIDs.length;i++){
+        document.getElementById(boxesArrayIDs[i]).removeEventListener("mousedown",changeBoxes);
+        }
+        document.getElementById(boxesArrayIDs[randomNumBoxId]).addEventListener("mousedown",changeBoxes);
+
+
+      }
+
+      function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        seconds = parseInt(timer % 10, 10);
+
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+
+        }
+    }, 1000);
+    }
+}
+ //on load
+
+  </script>
+</head>
+<body>
+
+  <div id="scoreLabel" class="label">Time</div>
+  <div id ="time" class="label"> test </div>
+  <div class = "wrapper">
+  <div id = "c" class = "box"></div>
+  <div id = "d" class = "box"></div>
+  <div id = "e" class = "box"></div>
+  <div id = "f" class = "box"></div>
+  <div id = "g" class = "box"></div>
+  <br />
+  <p style = "display:none;" id = "displayText" class = "para"></p>
+</div>
+
+</br><div id="scoreLabel" class="label">Score</div>
+<div id ="score" class="label"></div>
+</body>
+</html>
