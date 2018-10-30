@@ -60,7 +60,7 @@
     var fiveMinutes = 60 * 5,
    display = document.querySelector('#time');
     startTimer(fiveMinutes, display);
-    console.log("testing");
+    console.log("time");
 
     var score = 0;
 
@@ -101,9 +101,9 @@
       function startTimer(duration, display) {
     var timer = duration, minutes, seconds;
     setInterval(function () {
-        seconds = parseInt(timer % 10, 10);
+        seconds = parseInt(timer % 30, 30);
 
-        seconds = seconds < 10 ? "0" + seconds : seconds;
+        seconds = seconds < 30 ? "0" + seconds : seconds;
 
         display.textContent = seconds;
 
@@ -121,7 +121,7 @@
 <body>
 
   <div id="scoreLabel" class="label">Time</div>
-  <div id ="time" class="label"> test </div>
+  <div id ="time" class="label"> </div>
   <div class = "wrapper">
   <div id = "c" class = "box"></div>
   <div id = "d" class = "box"></div>
