@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Athiti|PT+Sans+Narrow" rel="stylesheet">
+    <meta charset="utf-8">
+   <title>JSON LOAD EX</title>
+  <script src = "jquery/jquery-3.3.1.min.js"></script>
+   <script>
+   $(document).ready(function(){
+   let header = $('header');
+   let section = $('section');
+   let loaded=false;
+   let userInput;
+
+   $("#GetData").click(function(event){
+          console.log("clicked");
+          $.getJSON('books.json',function(data) {
+
+          //success
+            //step 1: console.log the result
+            console.log(data);
+
+           userInput = $("#textField").val();
+          console.log (userInput);
+
+            //set boolean to true
+
+            //step 2: display header on html page
+            populateHeader(data);
+            //step 3: display the books ....
+            showBooks(data);
+          })
+          //fail
+          .fail(function() {
+            console.log( "error" );
+          });
+
+    });
+    function populateHeader(data){
+      let sampleHeader = $("<h1>");
+      $(sampleHeader).text(data.Label);
+      $(sampleHeader).appendTo(header);
+
+
+      let samplePara = $("<p>");
+      console.log(data.SubLabel);
+      $(samplePara).text(data.SubLabel);
+      $(samplePara).appendTo(header);
+
+    }
+
+
+    function showBooks(data){
+    // our array of each book objects
+    let Food = data['FoodDays'];
+
+    for (var i = 0; i < Food.length; i++) {
+      if(Food[i].Day.toLowerCase() === userInput.toLowerCase() ){
+
+      let sampleBookArticle = $('<article>');
+      let sampleBookH2 =('<h1>');
+      let samplePara1 = $("<p>");
+      let samplePara2 = $("<p>");
+      let samplePara3 = $("<p>");
+      let samplePara4 = $("<p>");
+      let sampleList= $("<ul>");
+
+
+      $(sampleBookH2).text(Food[i].Breakfast);
+      $(samplePara1).text(Food[i].Lunch);
+      $(samplePara2).text(Food[i].Dinner);
+      $(samplePara3).text(Food[i].Location);
+      $(samplePara4).text(Food[i].WhoWith);
+
+
+      // let bookPrices = books[i].Price;
+      //
+      //
+      // for (let j = 0; j < bookPrices.length; j++) {
+      //   let listItem = $('<li>');
+      //   $(listItem).text("type:: "+ bookPrices[j].type+" & price:: $"+bookPrices[j].price);
+      //   $(listItem).appendTo(sampleList);
+      // }
+
+      $(sampleBookH2).appendTo(sampleBookArticle);
+      $(samplePara1).appendTo(sampleBookArticle);
+      $(samplePara2).appendTo(sampleBookArticle);
+      $(samplePara3).appendTo(sampleBookArticle);
+      $(samplePara4).appendTo(sampleBookArticle);
+      $(sampleList).appendTo(sampleBookArticle);
+
+      $(section).append(sampleBookArticle);
+     }
+    } //books
+  }//function
+ });
+
+   </script>
+  </head>
+
+  <style>
+
+html {
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-family: 'Athiti', sans-serif;
+  font-family: 'Amatic SC', cursive;
+  font-size: 25px;
+}
+
+body {
+  width: 100%;
+}
+/* header styles */
+
+h1 {
+  margin-left:30vw;
+}
+
+
+header p {
+  font-weight: bold;
+  margin-left:30vw;
+}
+section{
+  margin-left:25vw;
+}
+
+/* section styles */
+
+section article {
+  margin-left:2%;
+  margin-right:20%;
+  margin-bottom:2%;
+  background:#b4e4f6;
+  padding:2%;
+}
+
+section p {
+  font-size:1em;
+  font-weight: bold;
+}
+
+section ul {
+  margin-top: 0;
+  font-size:1em;
+}
+
+h2 {
+  font-size: 2.5rem;
+  letter-spacing: -5px;
+  margin-bottom: 10px;
+}
+#getData{
+  background:orange;
+  width:100px;
+  margin:2%;
+}
+#textField{
+  Margin:2%;
+}
+  </style>
+
+  <body>
+
+  <div class = "searchCrit">
+    <input type = "text" value = "Monday-Thursday" id = "textField" />
+    <input type="button" value= "Search!" id="GetData" />
+  </div>
+      <header>
+
+      </header>
+
+      <section>
+
+      </section>
+
+
+  </body>
+</html>

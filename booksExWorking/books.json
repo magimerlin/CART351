@@ -1,0 +1,35 @@
+{
+  "Label":"Food I've Eaten",
+  "SubLabel":"This data is loaded from a json file::",
+  "FoodDays":
+  [
+    {"Day": "Monday",
+    "Breakfast": "grapes",
+    "Lunch": "faux chicken sandwhich",
+    "Dinner": "pasta with vegan meat sauce",
+        "Location": "my apartment",
+        "WhoWith": "no one"},
+
+  {"Day": "Tuesday",
+    "Breakfast": "bagle and cream cheese",
+    "Lunch": "grilled cheese",
+    "Dinner": "veggie chilli",
+        "EatingLocation": "Hotel Ambrose",
+        "WhoWith": "alone" },
+
+    {"Day": "Wednesday",
+      "Breakfast": "Chia pudding with bananas, oat milk and dates ",
+      "Lunch": "Fake fried chicken, french fries and spinich salad",
+      "Dinner": "cracker and penut butter",
+           "EatingLocation": "My Apartment",
+          "WhoWith": "My roommates"},
+
+      {"Day": "Thursday",
+        "Breakfast": "Breakfast: Nothin' at all",
+        "Lunch": "Lunch: Chickpea Curry",
+        "Dinner": "Dinner: Chickpea Curry and a paratha",
+            "EatingLocation": "My apartment and at a park in the mile end",
+            "WhoWith": "Who did I eat with: my friend Matthew"
+        }
+   ]
+  }
